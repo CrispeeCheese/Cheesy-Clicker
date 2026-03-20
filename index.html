@@ -27,11 +27,15 @@
                 cursor: pointer;
                 margin-top: 20px;
             }
-            button:hover {
-                background-color: #ffb800;
-            }
-            button:active {
-                transform: scale(0.93);
+            button:hover {background-color: #ffb800;}
+            button:active {transform: scale(0.93);}
+
+            .upgrade-btn {
+                font-size: 16px;
+                padding: 12px 24px;
+                background-color: #ffe680;
+                display: block;
+                margin: 10px auto;
             }
         </style>
     </head>
@@ -40,17 +44,22 @@
         <h1>Grilled Cheese Clicker</h1>
         <p>Grilled Cheeses: <span id="count">0</span></p>
         <p>Per click: <span id="perclick">1</span></p>
+        <p>Per second: <span id="persecond">0</span></p>
         <button onclick="addCheese()">Click The Cheese...</button>
 
         <hr>
-        <button id="upgrade-btn" onclick="buyButter()">
+        <button class="upgrade-btn" onclick="buyButter()">
             Buy Butter - 10 Grilled Cheese (+1 per click)
+        </button>
+        <button class="upgrade-btn" onclick="buyToaster()">
+            <p id="upgrade-msg"></p>
         </button>
         <p id="upgrade-msg"></p>
 
         <script>
             let grilledCheeses = 0
             let perClick = 1
+            let perSecond = 0;
 
             function addCheese() {
                 grilledCheeses = grilledCheeses + perClick;
@@ -67,7 +76,22 @@
                 } else {
                     document.getElementById("upgrade-msg").innerHTML = "Need More Cheese"
             }
-            }
+         }
+
+         funtion buyToaster() {
+            if(grilledCheeses>=35)
+             grilledCheeses = grilledCheeses -50;
+            perSecond = perSecond + 1
+            document.getElementById("count").innerHTML = grilledCheeses
+            document.getElementById("persecond").innerHTML = perSecond
+            document.getElementById("upgrade-msg").innerHTML = "Upgrade Purchased"
+            } else {
+                    document.getElementById("upgrade-msg").innerHTML = "Need More Cheese"
+         }
+         setInterval(funtion() {
+            grilledCheeses = grilledCheeses + perSecond;
+            document.getElementById("count").innerHTML = grilledCheeses
+         }, 1000);
         </script>
     </body>
 </html>
