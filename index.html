@@ -60,7 +60,6 @@
             let grilledCheeses = 0
             let perClick = 1
             let perSecond = 0;
-            loadGame();
 
             function addCheese() {
                 grilledCheeses = grilledCheeses + perClick;
@@ -104,13 +103,14 @@
              perSecond = Number(localStorage.getItem("perSecond"));
              document.getElementById("count").innerHTML = grilledCheeses;
              document.getElementById("perclick").innerHTML = perClick;
-             document.getElementById("perSecond").innerHTML = perSecond;
+             document.getElementById("persecond").innerHTML = perSecond;
         }
         }
+        loadGame();
 
          setInterval(function() {
             grilledCheeses = grilledCheeses + perSecond;
-            document.getElementById("count").innerHTML = grilledCheeses;
+            document.getElementById("count").innerHTML = Math.floor(grilledCheeses);
          }, 1000);
 
          setInterval(function() {
