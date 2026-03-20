@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grilled Cheese Clicker</title>
+    </head>
+    <body>
+
+        <h1>Grilled Cheese Clicker</h1>
+        <p>Grilled Cheeses: <span id="count">0</span></p>
+        <button onclick="addCheese()">Click The Cheese...</button>
+
+        <script>
+            let grilledCheeses = 0
+
+            function addCheese() {
+                grilledCheeses = grilledCheeses + 1;
+                document.getElementById("count").innerHTML = grilledCheeses
+            }
+        </script>
+    </body>
+</html>
