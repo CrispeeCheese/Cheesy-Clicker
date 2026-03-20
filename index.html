@@ -60,6 +60,7 @@
             let grilledCheeses = 0
             let perClick = 1
             let perSecond = 0;
+            loadGame();
 
             function addCheese() {
                 grilledCheeses = grilledCheeses + perClick;
@@ -89,10 +90,32 @@
                     document.getElementById("upgrade-msg").innerHTML = "Need More Cheese";
          }
         }
+        
+        function saveGame() {
+            localStorage.setItem("cheeses", grilledCheeses);
+            localStorage.setItem("perClick", perClick);
+            localStorage.setItem("perSecond", perSecond);
+        }
+
+        function loadGame() {
+            if (localStorage.getItem("cheeses")) {
+             grilledCheeses = Number(localStorage.getItem("cheeses"));
+             perClick = Number(localStorage.getItem("perClick"));
+             perSecond = Number(localStorage.getItem("perSecond"));
+             document.getElementById("count").innerHTML = grilledCheeses;
+             document.getElementById("perclick").innerHTML = perClick;
+             document.getElementById("perSecond").innerHTML = perSecond;
+        }
+        }
+
          setInterval(function() {
             grilledCheeses = grilledCheeses + perSecond;
             document.getElementById("count").innerHTML = grilledCheeses;
          }, 1000);
+
+         setInterval(function() {
+            saveGame();
+         }, 5000);
         </script>
     </body>
 </html>
