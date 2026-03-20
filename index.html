@@ -96,6 +96,18 @@
                     document.getElementById("upgrade-msg").innerHTML = "Need More Cheese";
          }
         }
+
+        function buyPan() {
+  if (grilledCheeses >= 75) {
+    grilledCheeses = grilledCheeses - 75;
+    perClick = perClick + 5;
+    document.getElementById("count").innerHTML = grilledCheeses;
+    document.getElementById("perclick").innerHTML = perClick;
+    document.getElementById("upgrade-msg").innerHTML = "Frying Pan bought!";
+  } else {
+    document.getElementById("upgrade-msg").innerHTML = "Need More Cheese!";
+  }
+}
         
         function saveGame() {
             localStorage.setItem("cheeses", grilledCheeses);
