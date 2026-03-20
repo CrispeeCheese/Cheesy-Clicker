@@ -39,14 +39,34 @@
 
         <h1>Grilled Cheese Clicker</h1>
         <p>Grilled Cheeses: <span id="count">0</span></p>
+        <p>Per click: <span id="perclick">1</span></p>
         <button onclick="addCheese()">Click The Cheese...</button>
+
+        <hr>
+        <button id="upgrade-btn" onclick="buyButter()">
+            Buy Butter - 10 Grilled Cheese (+1 per click)
+        </button>
+        <p id="upgrade-msg"></p>
 
         <script>
             let grilledCheeses = 0
+            let perClick = 1
 
             function addCheese() {
-                grilledCheeses = grilledCheeses + 1;
+                grilledCheeses = grilledCheeses + perClick;
+                document.getElementById("count").innerHTML = grilledCheeses;
+            }
+
+            function buyButter() {
+                if (grilledCheeses >= 10) {
+                grilledCheeses = grilledCheeses - 10
+                perClick = perClick + 1
                 document.getElementById("count").innerHTML = grilledCheeses
+                document.getElementById("perclick").innerHTML = perClick
+                document.getElementById("upgrade-msg").innerHTML = "Upgrade Purchased"
+                } else {
+                    document.getElementById("upgrade-msg").innerHTML = "Need More Cheese"
+            }
             }
         </script>
     </body>
