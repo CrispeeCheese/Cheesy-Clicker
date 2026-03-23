@@ -79,8 +79,8 @@
 
             function addCheese() {
                 grilledCheeses = grilledCheeses + perClick;
-                document.getElementById("count").innerHTML = grilledCheeses;
-                document.getElementById("perclick").innerHTML = perClick.toFixed(2);
+                document.getElementById("count").innerHTML = Math.floor(grilledCheeses);
+                document.getElementById("perclick").innerHTML = Math.floor(perClick);
             }
 
             function buyButter() {
@@ -133,7 +133,7 @@
              perClick = Number(localStorage.getItem("perClick"));
              perSecond = Number(localStorage.getItem("perSecond"));
              document.getElementById("count").innerHTML = grilledCheeses;
-             document.getElementById("perclick").innerHTML = perClick.toFixed(2);
+             document.getElementById("perclick").innerHTML = Math.floor(perClick);
              document.getElementById("persecond").innerHTML = perSecond;
              document.getElementById("rebirth-count").innerHTML = rebirths;
              document.getElementById("rebirth-multiplier").innerHTML = rebirthMultiplier.toFixed(2);
@@ -160,7 +160,7 @@
                     rebirths = rebirths + 1;
                     rebirthMultiplier = rebirthMultiplier * 1.25;
                     grilledCheeses = 0;
-                    perClick = 1 * rebirthMultiplier;
+                    perClick = Math.round(rebirthMultiplier);
                     perSecond = 0;
                     document.getElementById("count").innerHTML = 0;
                     document.getElementById("perclick").innerHTML = perClick.toFixed(2);
