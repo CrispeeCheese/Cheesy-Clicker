@@ -62,6 +62,9 @@
         <button class="upgrade-btn" onclick="saveGame()">
             Save Game
         </button>
+        <button class="upgrade-btn" onclick="resetGame()" style="background-color: #ffaaaa;">
+
+        </button>
 
         <script>
             let grilledCheeses = 0
@@ -124,6 +127,19 @@
              document.getElementById("perclick").innerHTML = perClick;
              document.getElementById("persecond").innerHTML = perSecond;
         }
+        }
+
+        function resetGame() {
+            if(confirm("Are you sure? This will DELETE all progress...")) {
+                localStorage.clear();
+                grilledCheeses = 0;
+                perClick = 1;
+                perSecond = 0;
+                document.getElementById("count").innerHTML = 0;
+                document.getElementById("perclick").innerHTML = 1;
+                document.getElementById("persecond").innerHTML = 0;
+                document.getElementById("upgrade-msg").innerHTML = "Reset Completed..."
+            }
         }
         loadGame();
 
