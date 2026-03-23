@@ -153,7 +153,7 @@
         }
 
         function rebirth() {
-            let rebirthCost = 1000 * math.pow(5, rebirths);
+            let rebirthCost = 1000 * Math.pow(5, rebirths);
             if (grilledCheeses >= rebirthCost) {
                 if (confirm("Are You Ready To Ascend? (all is givin up for a 1.25x grilling power)?")) {
                     rebirths = rebirths + 1;
@@ -166,7 +166,7 @@
                     document.getElementById("persecond").innerHTML = 0;
                     document.getElementById("rebirth-count").innerHTML = rebirths;
                     document.getElementById("rebirth-multiplier").innerHTML = rebirthMultiplier.toFixed(2);
-                    document.getElementById("upgrade-msg").innerHTML = "The Cheese Calls To The Heavens... You Answered..."
+                    document.getElementById("upgrade-msg").innerHTML = "The Cheese Calls To The Heavens... You Answered...";
                     saveGame();
                 }
             } else {
