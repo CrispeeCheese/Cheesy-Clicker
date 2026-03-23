@@ -80,6 +80,7 @@
             function addCheese() {
                 grilledCheeses = grilledCheeses + perClick;
                 document.getElementById("count").innerHTML = grilledCheeses;
+                document.getElementById("perclick").innerHTML = perClick.toFixed(2);
             }
 
             function buyButter() {
@@ -132,7 +133,7 @@
              perClick = Number(localStorage.getItem("perClick"));
              perSecond = Number(localStorage.getItem("perSecond"));
              document.getElementById("count").innerHTML = grilledCheeses;
-             document.getElementById("perclick").innerHTML = perClick;
+             document.getElementById("perclick").innerHTML = perClick.toFixed(2);
              document.getElementById("persecond").innerHTML = perSecond;
              document.getElementById("rebirth-count").innerHTML = rebirths;
              document.getElementById("rebirth-multiplier").innerHTML = rebirthMultiplier.toFixed(2);
@@ -170,7 +171,7 @@
                     saveGame();
                 }
             } else {
-                document.getElementById("upgrade-msg").innerHTML = "You Are NOT Ready... (Need" + rebirthCost + "Grilled Cheeses)";
+                document.getElementById("upgrade-msg").innerHTML = "You Are NOT Ready... (Need " + rebirthCost + " Grilled Cheeses)";
             }
         }
 
