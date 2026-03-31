@@ -45,7 +45,9 @@
         <p>Grilled Cheeses: <span id="count">0</span></p>
         <p>Per click: <span id="perclick">1</span></p>
         <p>Per second: <span id="persecond">0</span></p>
-        <button onclick="addCheese()">Click The Cheese...</button>
+        <button onclick="addCheese()" style="background:none; border:none; cursor:pointer;">
+            <img src="Grilled Cheese for Code.png" alt="Grilled Cheese" width="300">
+        </button>
 
         <hr>
         <h2 style="color: #c47a00;">Upgrades</h2>
@@ -166,12 +168,12 @@
                 if (grilledCheeses >= 10) {
                 grilledCheeses = grilledCheeses - 10
                 perClick = perClick + 1
-                document.getElementById("count").innerHTML = grilledCheeses
-                document.getElementById("perclick").innerHTML = perClick
-                document.getElementById("upgrade-msg").innerHTML = "Upgrade Purchased"
+                document.getElementById("count").innerHTML = grilledCheeses;
+                document.getElementById("perclick").innerHTML = perClick;
+                document.getElementById("upgrade-msg").innerHTML = "Upgrade Purchased";
+                checkAchievements();
                 } else {
-                    document.getElementById("upgrade-msg").innerHTML = "Need More Cheese"
-                    checkAchievements();
+                    document.getElementById("upgrade-msg").innerHTML = "Need More Cheese";
             }
          }
 
@@ -182,9 +184,9 @@
              document.getElementById("count").innerHTML = grilledCheeses;
              document.getElementById("persecond").innerHTML = perSecond;
              document.getElementById("upgrade-msg").innerHTML = "Upgrade Purchased";
+             checkAchievements();
             } else{
                     document.getElementById("upgrade-msg").innerHTML = "Need More Cheese";
-                    checkAchievements();
          }
         }
 
@@ -195,12 +197,37 @@
     document.getElementById("count").innerHTML = grilledCheeses;
     document.getElementById("perclick").innerHTML = perClick;
     document.getElementById("upgrade-msg").innerHTML = "Upgrade Purchased";
+    checkAchievements();
   } else {
     document.getElementById("upgrade-msg").innerHTML = "Need More Cheese";
-    checkAchievements();
   }
 }
-        
+
+function buyGrilledCheeseStand() {
+    if (grilledCheeses >= 200) {
+        grilledCheeses = grilledCheeses - 200;
+        perSecond = perSecond + 5;
+        document.getElementById("count").innerHTML = grilledCheeses;
+        document.getElementById("persecond").innerHTML = perSecond;
+        document.getElementById("upgrade-msg").innerHTML = "Upgrade Purchased";
+        checkAchievements();
+    } else {
+        document.getElementById("upgrade-msg").innerHTML = "Need More Cheese";
+    }
+}
+
+function buyStoreFront() {
+    if (grilledCheeses >= 750) {
+        grilledCheeses = grilledCheeses - 750
+        perSecond = perSecond + 15
+        document.getElementById("count").innerHTML = grilledCheeses;
+        document.getElementById("persecond").innerHTML = perSecond;
+        document.getElementById("upgrade-msg").innerHTML = "Upgrade Purchased";
+        checkAchievements();
+    } else {
+        document.getElementById("upgrade-msg").innerHTML = "Need More Cheese";
+    }
+}      
         function saveGame() {
             localStorage.setItem("cheeses", grilledCheeses);
             localStorage.setItem("perClick", perClick);
