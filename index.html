@@ -155,7 +155,8 @@
 
             function renderAchievements() {
                 let list = document.getElementById("achievements-list");
-                list.innerHTML.forEach(function(ach) {
+                list.innerHTML = " ";
+                achievements.forEach(function(ach) {
                     let card = document.createElement("div");
                     card.style.cssText = "background:" + (ach.unlocked ? "#ffd020" : "#ddd") + ";border:2px solid " + (ach.unlocked ? "#c47a00" : "#aaa") + ";border-radius:10px;padding:10px 15px;font-size:14px;width:150px;text-align:center;";
                     card.innerHTML = "<b>" + ach.name + "</b><br><span style='font-size:12px;color:#7a5500'>" + ach.desc + "</span>";
