@@ -3,40 +3,188 @@
     <head>
         <title>Grilled Cheese Clicker</title>
         <style>
-            body {
-                background-color: #fff8d0
-                font-family: Arial, sans-serif;
-                text-align: center;
-                padding: 40px;
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
             }
 
-            h1 {
-                color: #c47a00;
-                font-size: 36px;
+            body {
+                background-color: #fff8d0;
+                font-family: Arial, sans-serif;
+                height: 100vh;
+                display: grid;
+                grid-template-rows: auto auto 1fr auto;
+                grid-template-columns: 1fr 1fr;
+                grid-template-areas: 
+                    "counter   dropdowns"
+                    "sandwich  dropdowns"
+                    "sandwich  dropdowns"
+                    "msg       reset";
+                gap: 10px;
+                padding:16px;
             }
-            p {
-                font-size: 24px;
-                color: #7a5500
-            }
-            button {
-                font-size:24px;
-                padding:20px 40px;
-                background-color: #ffd020;
-                border: 3px solid #c47a00
+
+            #counter-box {
+                grid-area: counter;
+                background: #ffd020;
+                border: 3px solid #c47a00;
                 border-radius: 12px;
-                cursor: pointer;
-                margin-top: 20px;
+                padding: 16px 20px;
             }
-            button:hover {background-color: #ffb800;}
-            button:active {transform: scale(0.93);}
+
+            #counter-box h1 {
+                color: #c47a00;
+                font-size: 24px;
+                margin-bottom: 8px;
+            }
+
+            #counter-box p {
+                font-size: 16px;
+                color: #7a5500;
+                margin: 4px 0;
+            }
+
+            #sandwich-zone {
+                grid-area: sandwich;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #sandwich-btn {
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+            
+            #sandwich-btn:active {
+                transform: scale(0.93);
+            }
+
+            #sandwich-btn img {
+                width: 340px;
+                max-width: 100%;
+                filter: drop-shadow(0 6px 12px rgba(180,100,0,0.25));
+            }
+
+            #dropdowns {
+                grid-area: dropdowns;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                overflow-y: auto;
+            }
+
+            .dropdown-section {
+                background: #ffd020;
+                border: 3px solid #c47a00;
+                border-radius: 12px;
+                overflow: hidden;
+            }
+
+            .dropdown-headerc{
+                background: #c47a00;
+                color: #fff8e0;
+                font-size: 16px;
+                font-weight: bold;
+                padding: 10px 16px;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                user-select: none;
+            }
+
+            .dropdown-content {
+                display: none;
+                flex-direction: column;
+                padding: 8px;
+                gap: 6px;
+            }
+
+            .dropdown-content.open {
+                display: flex;
+            }
 
             .upgrade-btn {
-                font-size: 16px;
-                padding: 12px 24px;
+                font-size: 14px;
+                padding: 10px 16px;
                 background-color: #ffe680;
-                display: block;
-                margin: 10px auto;
+                border: 2px solid #c47a00;
+                border-radius: 8px;
+                cursor: pointer;
+                text-align: left;
+                transition: background 0.1s;
             }
+
+            .upgrade-btn:hover { background-color: #ffb800; }
+            .upgrade-btn:active {transform: scale(0.97); }
+
+            #msg-box {
+                grid-area: msg;
+                background: #fff3b0;
+                border: 2px solid #e0c030;
+                border-radius: 10px;
+                padding: 12px 16px;
+                font-size: 15px;
+                color: #7a5500;
+                display: flex;
+                align-items: center;
+            }
+
+            #reset-box {
+                grid-area: reset;
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                justify-content: flex-end;
+            }
+
+            #reset-box button {
+                font-size: 14px;
+                padding: 10px 16px;
+                border-radius: 8px;
+                border: 2px solid #c47a00;
+                cursor: pointer;
+                font-weight: bold;
+            }
+
+            #achievements-section {
+                grid-column: 1 / -1;
+                background: #fff3b0;
+                border: 2px solid #e0c030;
+                border-radius: 12px;
+                padding: 12px;
+            }
+
+            #achievements-section h2 {
+                color: #c47a00;
+                margin-bottom: 8px;
+            }
+
+            #achievements-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            #achievement-popup {
+                display: none;
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #ffd020;
+                border: 3px solid #c47a00;
+                border-radius: 12px;
+                padding: 15px 20px;
+                font-size: 18px;
+                font-weight: bold;
+                color: #5a3800;
+                z-index: 999;
+            }
+
+
         </style>
     </head>
     <body>
