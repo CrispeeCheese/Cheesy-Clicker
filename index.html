@@ -83,7 +83,7 @@
                 overflow: hidden;
             }
 
-            .dropdown-headerc{
+            .dropdown-header{
                 background: #c47a00;
                 color: #fff8e0;
                 font-size: 16px;
@@ -188,68 +188,28 @@
         </style>
     </head>
     <body>
+        <div id="counter-box">
+            <h1> Grilled Cheese Clicker</h1>
+            <p>Cheese: <span id="count">0</span></p>
+            <p>Per Click: <span id="perclick">1</span></p>
+            <p>Per Second: <span id="persecond">0</span></p>
+            <p>Rebirths: <span id="rebirth-count">0</span> | <span id="rebirth-multiplier">1.00</span>x</p>
+        </div>
 
-        <h1>Grilled Cheese Clicker</h1>
-        <p>Grilled Cheeses: <span id="count">0</span></p>
-        <p>Per click: <span id="perclick">1</span></p>
-        <p>Per second: <span id="persecond">0</span></p>
-        <button onclick="addCheese()" style="background:none; border:none; cursor:pointer;">
-            <img src="Grilled Cheese for Code.png" alt="Grilled Cheese" width="300">
-        </button>
-
-        <hr>
-        <h2 style="color: #c47a00;">Upgrades</h2>
-        <button class="upgrade-btn" onclick="buyButter()">
-            Buy Butter - 10 Grilled Cheese (+1 per click)
-        </button>
-        <button class="upgrade-btn" onclick="buyPan()">
-            Frying Pan - 75 Grilled Cheese (+5 per click)
-        </button>
-        <button class="upgrade-btn" onclick="buyToaster()">
-            Buy Toaster - 35 Grilled Cheese (+1 per Second)
-        </button>
-         <button class="upgrade-btn" onclick="buyGrilledCheeseStand()">
-            Grilled Cheese Stand - 200 Grilled Cheese (+5 per second)
-        </button>
-        <button class="upgrade-btn" onclick="buyStoreFront()">
-            Store Front - 750 Grilled Cheese (+15 per second)
-        </button>
-        <p id="upgrade-msg"></p>
-        <button class="upgrade-btn" onclick="saveGame()">
-            Save Game
-        </button>
-        <button class="upgrade-btn" onclick="resetGame()" style="background-color: #ffaaaa;">
-            RESET GAME
-        </button>
-        <button class="upgrade-btn" onclick="rebirth()" style="background-color: #ffd700;">
-            REBIRTH
-        </button>
-        <p>Rebirths: <span id="rebirth-count">0</span> | Multiplier: <span id="rebirth-multiplier">1.00</span>x</p>
-       
-
-        <hr>
-        <h2 style="color: #c47a00;">Cheese Wheels</h2>
-        <div id="achievement-popup" style="
-        display: none;
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: #ffd020;
-        border: 3px solid #c47a00;
-        border-radius: 12px;
-        padding: 15px 20px;
-        font-size: 18px;
-        font-weight: bold;
-        color: #5a3800;
-        z-index: 999;
-        "></div>
-        <div id="achievements-list" style="
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 10px;
-        "></div>
+        <div id="dropdowns">
+            <div class="dropdown-section">
+                <div class="dropdown-header" onclick="toggleDropdown('upgrades-content')">
+                    Upgrades <span>▼</span>
+                </div>
+                <div class="dropdown-content" id="upgrades-content">
+                    <button class="upgrade-btn" onclick="buyButter()"> Butter - 10 Cheeses (+1/Click)</button>
+                    <button class="upgrade-btn" onclick="buyPan()"> Frying Pan - 75 Cheeses (+5/Click)</button>
+                    <button class="upgrade-btn" onclick="buyToaster()"> Toaster - 35 Cheeses (+1/Sec)</button>
+                    <button class="upgrade-btn" onclick="buyGrilledCheeseStand()"> Grilled Cheese Stand - 200 Cheeses (+5/Sec)</button>
+                    <button class="upgrade-btn" onclick="buyStoreFront()"> Store Front - 750 Cheeses (+15/Sec)</button>
+                </div>
+            </div>
+        </div>
 
 
         <script>
@@ -429,6 +389,10 @@ function buyStoreFront() {
                 document.getElementById("rebirth-count").innerHTML = 0;
                 document.getElementById("rebirth-multiplier").innerHTML = "1.00";
                 document.getElementById("upgrade-msg").innerHTML = "Reset Completed...";
+                achievements.forEach(funtion(ach) {
+                    ach.unlocked = false;
+                });
+                renderAchievements();
             }
         }
 
