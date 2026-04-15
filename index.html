@@ -429,6 +429,10 @@ function buyStoreFront() {
                 document.getElementById("rebirth-count").innerHTML = 0;
                 document.getElementById("rebirth-multiplier").innerHTML = "1.00";
                 document.getElementById("upgrade-msg").innerHTML = "Reset Completed...";
+                achievements.forEach(function(ach) {
+                    ach.unlocked = false;
+                });
+                renderAchievements();
             }
         }
 
